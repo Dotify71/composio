@@ -63,7 +63,7 @@ app.get('/test/mcp-client', async c => {
     },
   });
 
-  c.executionCtx.waitUntil(mcpClient.close());
+  c.executionCtx.waitUntil(mcpClient.close().catch(() => {}));
 
   return c.json({
     message: 'MCP client connected successfully',
@@ -132,7 +132,7 @@ app.get('/test/agent', async c => {
       response: result.output,
     });
   } finally {
-    c.executionCtx.waitUntil(mcpClient.close());
+    c.executionCtx.waitUntil(mcpClient.close().catch(() => {}));
   }
 });
 

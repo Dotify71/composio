@@ -95,7 +95,7 @@ e2e(import.meta.url, {
         expect(result.object).toBeDefined();
         expect(result.object.karma).toBeGreaterThanOrEqual(0);
       
-        await mcpClient.disconnect();
+        await mcpClient.disconnect().catch(() => {});
       }, {
         timeout: TIMEOUTS.LLM_SHORT,
       });
